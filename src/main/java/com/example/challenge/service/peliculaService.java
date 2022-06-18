@@ -10,6 +10,7 @@ import com.example.challenge.repositorios.PeliculasRepositorio;
 import java.util.List;
 import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.stereotype.Service;
 
 /**
@@ -47,7 +48,8 @@ public class peliculaService {
     private PeliculasRepositorio peliculasRepo;
     
 //       ○ Al crear una Película, crearla con sus personajes asociados
-       public Peliculas  crear(String Imagen, String Título, String Fechadecreación, String Calificación, String Personajesasociados){
+@Transactional
+public Peliculas  save(String Imagen, String Título, String Fechadecreación, String Calificación, String Personajesasociados){
         Peliculas p = new Peliculas ();
         p.setTítulo(Título);
         p.setImagen(Imagen);
@@ -60,14 +62,14 @@ public class peliculaService {
     }
 //    ○ Al guardar/actualizar una película, se deberá devolver esta entidad
 //completa, es decir, con sus personajes asociados.
-     public Peliculas guardar(){
-        
-         
-         
-        return null ;
+    public Peliculas guardar(Peliculas peliculas){
+        return peliculasRepo.save(peliculas);
     }
 ////     ○ Al momento del Update, es importante solo actualizar la Entidad
 //Película y no su listado de personajes
+
+    
+
      public Peliculas  modificar(String id, String Imagen, String Título, String Fechadecreación, String Calificación, String Personajesasociados){
          Peliculas p = peliculasRepo.getById(id);
          
@@ -81,16 +83,40 @@ public class peliculaService {
         return peliculasRepo.save(p);
     }
      @Transactional
-     public void  eliminar(String id){
+     public void  delete(String id){
          
              Peliculas u = getOne(id);
         peliculasRepo.delete(u);
      
      
     }
-     
+    @Transactional
      public List<Peliculas> listarPeliculas(){
          
          return peliculasRepo.findAll();
      }
+     @Transactional
+    public Peliculas getOne(String id) {
+        return peliculasRepo.getOne(id);
+
+        
+
+    }
+
+    public List<Peliculas> getAll(SpringDataWebProperties.Pageable pageable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Peliculas getById(String id) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public Peliculas update(String id, Peliculas pelicula) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+ 
+
+
+
 }

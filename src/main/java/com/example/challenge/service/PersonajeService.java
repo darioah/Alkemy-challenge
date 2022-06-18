@@ -9,6 +9,12 @@ import com.example.challenge.entity.Personajes;
 import com.example.challenge.repositorios.PersonajeRepositorio;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+import java.util.Optional;
+
+import javax.transaction.Transactional;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+
 
 /**
  *Creación, Edición y Eliminación de Personajes (CRUD)
@@ -44,8 +50,9 @@ public class PersonajeService {
     private Personajes personajes;
      @Autowired
      private PersonajeRepositorio personajeRepo;
-    
-    public Personajes crear(String Imagen, String Nombre, String Edad, String Peso, String Historia, String Películas){
+
+     @Transactional
+    public Personajes save(String Imagen, String Nombre, String Edad, String Peso, String Historia, String Películas){
         Personajes p = new Personajes();
         p.setEdad(Edad);
         p.setHistoria(Historia);
@@ -58,12 +65,8 @@ public class PersonajeService {
         return personajeRepo.save(p);
     }
     
-     public Personajes guardar(){
-        
-         
-        return null ;
-    }
-     public Personajes modificar(String id, String Imagen, String Nombre, String Edad, String Peso, String Historia, String Películas ){
+   
+     public Personajes update(String id, String Imagen, String Nombre, String Edad, String Peso, String Historia, String Películas ){
         Personajes per = personajeRepo.getById(id);
          per.setEdad(Edad);
          per.setHistoria(Historia);
@@ -72,12 +75,36 @@ public class PersonajeService {
          per.setPeso(Peso);
         return null ;
     }
-     @Transaccional
-     public void  eliminar(String id){
+     @Transactional
+
+     public void  delete(String id){
          Personajes per = personajeRepo.getById(id);
          personajeRepo.deleteById(id);
          
        
     }
-    
+    @Transactional
+    public List<Personajes> getAll() {
+        return personajeRepo.findAll();
+    }
+
+    public Personajes getById(String id) {
+        return personajeRepo.getById(id);
+    }
+
+    public Optional<Personajes> getByName(String Nombre) {
+        return personajeRepo.findById(Nombre);
+    }
+
+    public List<Personajes> getDetalle(String calificación, String fechadecreación, String imagen, String personajesasociados, String título, String nombre, String edad, String historia, String imagen0, String películas, String peso) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public List<Personajes> getAll(SpringDataWebProperties.Pageable pageable) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+ 
+     
+     
 }
