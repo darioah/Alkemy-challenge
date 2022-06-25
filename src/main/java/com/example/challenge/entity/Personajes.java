@@ -15,22 +15,24 @@ import javax.persistence.Id;
 @Entity
 public class Personajes {
     @Id
-       protected String id;
+    protected String id;
 
     public Personajes(String id) {
-        
+
     }
-  protected String  Imagen;
-protected String Nombre;
- protected String Edad;
- protected String Peso;
-protected String Historia;
- protected String Películas;
+
+    protected String Imagen;
+    protected String Nombre;
+    protected String Edad;
+    protected String Peso;
+    protected String Historia;
+    protected String Películas;
 
     public Personajes() {
     }
 
-    public Personajes(String id, String Imagen, String Nombre, String Edad, String Peso, String Historia, String Películas) {
+    public Personajes(String id, String Imagen, String Nombre, String Edad, String Peso, String Historia,
+            String Películas) {
         this.id = id;
         this.Imagen = Imagen;
         this.Nombre = Nombre;
@@ -40,8 +42,6 @@ protected String Historia;
         this.Películas = Películas;
     }
 
-    
-    
     public String getImagen() {
         return Imagen;
     }
@@ -89,8 +89,5 @@ protected String Historia;
     public void setPelículas(String Películas) {
         this.Películas = Películas;
     }
- 
- 
- 
- 
+
 }

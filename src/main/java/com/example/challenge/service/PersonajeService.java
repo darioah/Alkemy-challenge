@@ -104,7 +104,29 @@ public class PersonajeService {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
- 
+   
+    public List<Personajes> listarPersonajes() throws Exception {
+        List<Personajes> personajes = personajeRepo.ListarPersonajes();
+        return personajes;
+    }
+    
+   
+    public List<Personajes> listarPersonajePorNombre(String nombre) throws Exception{
+        List<Personajes> personajes = personajeRepo.PersonajePorNombre(nombre);
+        return personajes;
+    }
+
+   
+    public List<Personajes> listarPersonajePorEdad(Integer edad) throws Exception {
+        List<Personajes> personajes = personajeRepo.PersonajePorEdad(edad);
+        return personajes;
+    }
+
+   
+    public List<Personajes> listarPersonajePorPelicula(Long IDmovie) throws Exception {
+        List<Personajes> personajes = personajeRepo.PersonajePorPelicula(IDmovie);
+        return personajes;
+    }
      
      
 }

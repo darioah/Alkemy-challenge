@@ -10,20 +10,21 @@ import javax.persistence.Id;
 
 @Entity
 public class Peliculas {
-    
+
     @Id
-       protected String id;
-protected String Imagen;
-protected String  Título;
- protected String Fechadecreación;
-protected String  Calificación;
-protected String  Personajesasociados;
+    protected String id;
+    protected String Imagen;
+    protected String Título;
+    protected String Fechadecreación;
+    protected String Calificación;
+    protected String Personajesasociados;
 
     public Peliculas() {
     }
 
-    public Peliculas(String id, String Imagen, String Título, String Fechadecreación, String Calificación, String Personajesasociados) {
-         this.id = id;
+    public Peliculas(String id, String Imagen, String Título, String Fechadecreación, String Calificación,
+            String Personajesasociados) {
+        this.id = id;
         this.Imagen = Imagen;
         this.Título = Título;
         this.Fechadecreación = Fechadecreación;
@@ -70,10 +71,5 @@ protected String  Personajesasociados;
     public void setPersonajesasociados(String Personajesasociados) {
         this.Personajesasociados = Personajesasociados;
     }
-
-    
-    
-
-
 
 }

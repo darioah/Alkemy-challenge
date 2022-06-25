@@ -30,7 +30,11 @@ public class GeneroService {
         return null;
     }
 
-    public Genero getById(int id) {
+    public Genero getById(String id) {
+        return null;
+    }
+
+    public Genero save(Genero genero) {
         return null;
     }
 

@@ -11,17 +11,16 @@ import javax.persistence.ManyToMany;
 
 @Entity
 public class Genero {
-    
-     @Id
-       protected String id;
 
-   protected String  Nombre;
-   
-     
-      protected String  Imagen;
-      
-      @ManyToMany
-      protected String Películas; 
+    @Id
+    protected String id;
+
+    protected String Nombre;
+
+    protected String Imagen;
+
+    @ManyToMany
+    protected String Películas;
 
     public Genero() {
     }
@@ -64,6 +63,5 @@ public class Genero {
     public void setPelículas(String Películas) {
         this.Películas = Películas;
     }
-    
-      
+
 }
